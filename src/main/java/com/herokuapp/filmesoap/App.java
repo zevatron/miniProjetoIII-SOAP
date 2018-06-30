@@ -1,11 +1,9 @@
 package com.herokuapp.filmesoap;
 
-import java.util.List;
-
 import javax.persistence.EntityManagerFactory;
+import javax.xml.ws.Endpoint;
 
 import com.herokuapp.filmesoap.dao.PersistenceUtil;
-import com.herokuapp.filmesoap.model.Filme;
 import com.herokuapp.filmesoap.service.FilmeService;
 
 /**
@@ -16,21 +14,11 @@ public class App
 {
     public static void main( String[] args ){
     	
-    	PersistenceUtil.createEntityManagerFactory("filmesoap");
     	
-        System.out.println( "Hello World!" );
-        Filme filme = new Filme();
-        FilmeService service = new FilmeService();
-        filme.setTitulo("teste2");
-        service.cadastrar(filme);
-        List<Filme> filmes = service.buscarFilmes();
-        for (Filme f : filmes) {
-        	System.out.println(f.getTitulo());
-        }
+    	FilmeService filmeService = new FilmeService();
+    	
+    	 Endpoint.publish("http://localhost:8080/filme", filmeService);
         
-        EntityManagerFactory emf = PersistenceUtil.getEntityManagerFactory();
-		if (emf != null) {
-			emf.close();
-		}
+        
     }
 }

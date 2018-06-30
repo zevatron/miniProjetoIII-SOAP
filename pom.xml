@@ -53,7 +53,7 @@
 					<assembleDirectory>target</assembleDirectory>
 					<programs>
 						<program>
-							<mainClass>com.herokuapp.filmesoap.Main</mainClass>
+							<mainClass>com.herokuapp.filmesoap.App</mainClass>
 							<name>filmesoap</name>
 						</program>
 					</programs>
