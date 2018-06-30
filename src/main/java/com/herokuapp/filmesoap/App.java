@@ -17,7 +17,11 @@ public class App
     	
     	FilmeService filmeService = new FilmeService();
     	
-    	 Endpoint.publish("http://localhost:8080/filme", filmeService);
+    	String port = System.getenv("PORT");
+        String host = "http://0.0.0.0:";
+        String uri = "/service";
+        Endpoint.publish(host + port + uri, filmeService);
+    	
         
         
     }
