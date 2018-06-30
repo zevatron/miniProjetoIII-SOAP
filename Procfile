@@ -1,1 +1,1 @@
-web: java -jar target/bin/filmesoap
+web: sh target/bin/filmesoap
