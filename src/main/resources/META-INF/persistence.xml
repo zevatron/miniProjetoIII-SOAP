@@ -8,9 +8,9 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.connection.username" value="postgres" />
-			<property name="hibernate.connection.password" value="postgres" />
-			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost/filmesoap" />
+			<property name="hibernate.connection.username" value="yfcpnsuckwwwxm" />
+			<property name="hibernate.connection.password" value="84e8b7178b0f894c79d5841ce84e584dee2dc70776e7f71f47823d49225c6c06" />
+			<property name="hibernate.connection.url" value="jdbc:postgresql://ec2-23-23-220-19.compute-1.amazonaws.com/d24a7sso74ae6r" />
 			<property name="hibernate.showSql" value="true" />
 			<property name="hibernate.c3p0.acquire_increment" value="1" />
 			<property name="hibernate.c3p0.idle_test_period" value="100" />
