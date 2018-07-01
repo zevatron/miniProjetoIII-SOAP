@@ -3,6 +3,7 @@ package com.herokuapp.filmesoap.service;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 
@@ -25,7 +26,7 @@ public class FilmeService {
 		return result;
 	}
 	
-	public Filme cadastrar(Filme filme) {
+	public Filme cadastrar(@WebParam(name="filme") Filme filme) {
 		
 		
 		FilmeDAO dao = new FilmeDAO();
