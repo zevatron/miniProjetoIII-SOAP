@@ -14,6 +14,7 @@ public class App
 {
     public static void main( String[] args ){
     	
+    	PersistenceUtil.createEntityManagerFactory("filmesoap");
     	
     	FilmeService filmeService = new FilmeService();
     	
