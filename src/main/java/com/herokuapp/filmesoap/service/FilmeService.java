@@ -22,7 +22,9 @@ public class FilmeService {
 		return dao.findAll();
 	}
 	
-	public Filme cadastrar(Filme filme) {
+	public Filme cadastrar(String titulo, String diretor, String estudio, String genero, String anoLancamento) {
+		
+		Filme filme = new Filme(titulo, diretor, estudio, genero, anoLancamento);
 		
 		FilmeDAO dao = new FilmeDAO();
 		
