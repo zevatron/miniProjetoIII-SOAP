@@ -3,6 +3,7 @@ package com.herokuapp.filmesoap.service;
 import java.util.List;
 
 import javax.jws.WebService;
+import javax.persistence.EntityManagerFactory;
 
 import com.herokuapp.filmesoap.dao.FilmeDAO;
 import com.herokuapp.filmesoap.dao.PersistenceUtil;
@@ -11,20 +12,32 @@ import com.herokuapp.filmesoap.model.Filme;
 @WebService(endpointInterface="com.herokuapp.filmesoap.service.FilmeService")
 public class FilmeService {
 	
-	public FilmeService() {
+	public void conectar() {
 		PersistenceUtil.createEntityManagerFactory("filmesoap");
+	}
+	public void desconectar() {
+		 EntityManagerFactory emf = PersistenceUtil.getEntityManagerFactory(); 
+		    if (emf != null) { 
+		      emf.close(); 
+		    } 
 	}
 	
 	public List<Filme> buscarFilmes(){
 		
+		conectar();
+		
 		FilmeDAO dao = new FilmeDAO();
 		
-		return dao.findAll();
+		List<Filme> result = dao.findAll();
+		
+		desconectar();
+		
+		return result;
 	}
 	
-	public Filme cadastrar(String titulo, String diretor, String estudio, String genero, String anoLancamento) {
+	public Filme cadastrar(Filme filme) {
 		
-		Filme filme = new Filme(titulo, diretor, estudio, genero, anoLancamento);
+		conectar();
 		
 		FilmeDAO dao = new FilmeDAO();
 		
@@ -35,6 +48,9 @@ public class FilmeService {
 			dao.update(filme);
 		}
 		dao.commit();
+		
+		desconectar();
+		
 		return filme;
 	}
 
