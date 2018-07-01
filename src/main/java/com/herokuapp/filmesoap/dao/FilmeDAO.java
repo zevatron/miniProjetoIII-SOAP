@@ -7,7 +7,7 @@ import com.herokuapp.filmesoap.model.Filme;
 public class FilmeDAO extends GenericDAO<Filme, Long>{
 	
 	public FilmeDAO() {
-		this(PersistenceUtil.getEntityManager());
+		this(PersistenceUtil.getCurrentEntityManager());
 	}
 
 	public FilmeDAO(EntityManager currentEntityManager) {

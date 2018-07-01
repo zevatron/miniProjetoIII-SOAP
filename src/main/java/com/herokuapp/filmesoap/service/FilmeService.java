@@ -13,13 +13,6 @@ import com.herokuapp.filmesoap.model.Filme;
 @WebService(endpointInterface="com.herokuapp.filmesoap.service.FilmeService")
 public class FilmeService {
 	
-	@WebMethod(exclude=true)
-	public void desconectar() {
-		 EntityManager em = PersistenceUtil.getCurrentEntityManager(); 
-		    if (em != null) { 
-		      em.close(); 
-		    } 
-	}
 	
 	public List<Filme> buscarFilmes(){
 		
@@ -28,8 +21,7 @@ public class FilmeService {
 		
 		List<Filme> result = dao.findAll();
 		
-		desconectar();
-		
+		PersistenceUtil.getCurrentEntityManager().close();
 		return result;
 	}
 	
@@ -45,8 +37,8 @@ public class FilmeService {
 			dao.update(filme);
 		}
 		dao.commit();
+		PersistenceUtil.getCurrentEntityManager().close();
 		
-		desconectar();
 		
 		return filme;
 	}

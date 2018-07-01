@@ -29,6 +29,7 @@ public class PersistenceUtil {
     }
     
     public static EntityManager getCurrentEntityManager() {
+    	emc.bind(emf, getEntityManager());
     	return emc.currentEntityManager();
     }
     
