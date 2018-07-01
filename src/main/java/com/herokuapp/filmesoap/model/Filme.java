@@ -24,6 +24,15 @@ public class Filme {
 		this.genero = genero;
 		this.anoLancamento = anoLancamento;
 	}
+	
+	public Filme(String titulo, String diretor, String estudio, String genero, String anoLancamento) {
+		this.titulo = titulo;
+		this.diretor = diretor;
+		this.estudio = estudio;
+		this.genero = genero;
+		this.anoLancamento = anoLancamento;
+	}
+
 
 	public Long getId() {
 		return id;
