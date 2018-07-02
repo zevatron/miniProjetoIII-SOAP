@@ -24,31 +24,31 @@ public class FilmeDAO extends GenericDAO<Filme, Long>{
 		StringBuilder sql = new StringBuilder();
 		sql.append("Select f from Filme f where 1=1");
 		if(titulo!=null && !titulo.isEmpty()) {
-			sql.append(" AND upper(f.titulo) like '%:titulo%'");
+			sql.append(" AND upper(f.titulo) like :titulo");
 		}
 		if(diretor != null && !diretor.isEmpty()) {
-			sql.append(" AND upper(f.diretor) like '%:diretor%'");
+			sql.append(" AND upper(f.diretor) like :diretor");
 		}
 		if(genero != null && !genero.isEmpty()) {
-			sql.append(" AND upper(f.genero) like '%:genero%'");
+			sql.append(" AND upper(f.genero) like :genero'");
 		}
 		if(anoLancamento != null && !anoLancamento.isEmpty()) {
-			sql.append(" AND upper(f.anoLancamento) like '%:anoLancamento%'");
+			sql.append(" AND upper(f.anoLancamento) like :anoLancamento");
 		}
 		
 		Query q = this.getEntityManager().createQuery(sql.toString());
 
 		if(titulo!=null && !titulo.isEmpty()) {
-			q.setParameter("titulo", titulo);
+			q.setParameter("titulo", "%"+titulo.toUpperCase()+"%");
 		}
 		if(diretor != null && !diretor.isEmpty()) {
-			q.setParameter("diretor", diretor);
+			q.setParameter("diretor", "%"+diretor.toUpperCase()+"%");
 		}
 		if(genero != null && !genero.isEmpty()) {
-			q.setParameter("genero", genero);
+			q.setParameter("genero", "%"+genero.toUpperCase()+"%");
 		}
 		if(anoLancamento != null && !anoLancamento.isEmpty()) {
-			q.setParameter("anoLancamento", anoLancamento);
+			q.setParameter("anoLancamento", "%"+anoLancamento+"%");
 		}
 
 		return q.getResultList();
