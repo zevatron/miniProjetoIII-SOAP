@@ -2,10 +2,8 @@ package com.herokuapp.filmesoap.service;
 
 import java.util.List;
 
-import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.persistence.EntityManager;
 
 import com.herokuapp.filmesoap.dao.FilmeDAO;
 import com.herokuapp.filmesoap.dao.PersistenceUtil;
@@ -26,6 +24,18 @@ public class FilmeService {
 		return result;
 	}
 	
+	public List<Filme> buscarFilme(
+			@WebParam(name="titulo") String titulo,
+			@WebParam(name="diretor") String diretor,
+			@WebParam(name="genero") String genero,
+			@WebParam(name="anoLancamento") String anoLancamento
+			){
+		FilmeDAO dao = new FilmeDAO();
+		List<Filme> resutlt = dao.buscarFilme(titulo, diretor, genero, anoLancamento);
+		PersistenceUtil.getCurrentEntityManager().close();
+		return resutlt;
+	}
+	
 	public Filme cadastrar(@WebParam(name="filme") Filme filme) {
 		
 		
@@ -40,6 +50,20 @@ public class FilmeService {
 		dao.commit();
 		PersistenceUtil.getCurrentEntityManager().close();
 		
+		
+		return filme;
+	}
+	
+	public Filme excluir(@WebParam(name="id") Long id) {
+		
+		FilmeDAO dao = new FilmeDAO();
+		
+		Filme filme = dao.find(id);
+		
+		dao.beginTransaction();
+		dao.delete(filme);
+		dao.commit();
+		PersistenceUtil.getCurrentEntityManager().close();
 		
 		return filme;
 	}
