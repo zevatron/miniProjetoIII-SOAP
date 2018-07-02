@@ -27,11 +27,12 @@ public class FilmeService {
 	public List<Filme> buscarFilme(
 			@WebParam(name="titulo") String titulo,
 			@WebParam(name="diretor") String diretor,
+			@WebParam(name="estudio") String estudio,
 			@WebParam(name="genero") String genero,
 			@WebParam(name="anoLancamento") String anoLancamento
 			){
 		FilmeDAO dao = new FilmeDAO();
-		List<Filme> resutlt = dao.buscarFilme(titulo, diretor, genero, anoLancamento);
+		List<Filme> resutlt = dao.buscarFilme(titulo, diretor, estudio, genero, anoLancamento);
 		PersistenceUtil.getCurrentEntityManager().close();
 		return resutlt;
 	}
