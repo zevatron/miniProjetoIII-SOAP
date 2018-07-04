@@ -10,27 +10,27 @@ public class Filme {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String titulo, diretor, estudio, genero, anoLancamento;
+	private String titulo, diretor, estudio, genero, ano;
 	
 	public Filme() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Filme(Long id, String titulo, String diretor, String estudio, String genero, String anoLancamento) {
+	public Filme(Long id, String titulo, String diretor, String estudio, String genero, String ano) {
 		this.id = id;
 		this.titulo = titulo;
 		this.diretor = diretor;
 		this.estudio = estudio;
 		this.genero = genero;
-		this.anoLancamento = anoLancamento;
+		this.ano = ano;
 	}
 	
-	public Filme(String titulo, String diretor, String estudio, String genero, String anoLancamento) {
+	public Filme(String titulo, String diretor, String estudio, String genero, String ano) {
 		this.titulo = titulo;
 		this.diretor = diretor;
 		this.estudio = estudio;
 		this.genero = genero;
-		this.anoLancamento = anoLancamento;
+		this.ano = ano;
 	}
 
 
@@ -74,12 +74,12 @@ public class Filme {
 		this.genero = genero;
 	}
 
-	public String getAnoLancamento() {
-		return anoLancamento;
+	public String getAno() {
+		return ano;
 	}
 
-	public void setAnoLancamento(String anoLancamento) {
-		this.anoLancamento = anoLancamento;
+	public void setAno(String ano) {
+		this.ano = ano;
 	}
 	
 	

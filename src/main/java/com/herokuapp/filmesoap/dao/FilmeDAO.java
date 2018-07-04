@@ -19,7 +19,7 @@ public class FilmeDAO extends GenericDAO<Filme, Long>{
 		super(currentEntityManager);
 	}
 	
-	public List<Filme> buscarFilme(String titulo, String diretor,String estudio, String genero, String anoLancamento){
+	public List<Filme> buscarFilme(String titulo, String diretor,String estudio, String genero, String ano){
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("Select f from Filme f where 1=1");
@@ -35,8 +35,8 @@ public class FilmeDAO extends GenericDAO<Filme, Long>{
 		if(genero != null && !genero.isEmpty()) {
 			sql.append(" AND upper(f.genero) like :genero");
 		}
-		if(anoLancamento != null && !anoLancamento.isEmpty()) {
-			sql.append(" AND upper(f.anoLancamento) like :anoLancamento");
+		if(ano != null && !ano.isEmpty()) {
+			sql.append(" AND upper(f.ano) like :ano");
 		}
 		
 		Query q = this.getEntityManager().createQuery(sql.toString());
@@ -53,8 +53,8 @@ public class FilmeDAO extends GenericDAO<Filme, Long>{
 		if(genero != null && !genero.isEmpty()) {
 			q.setParameter("genero", "%"+genero.toUpperCase()+"%");
 		}
-		if(anoLancamento != null && !anoLancamento.isEmpty()) {
-			q.setParameter("anoLancamento", "%"+anoLancamento+"%");
+		if(ano != null && !ano.isEmpty()) {
+			q.setParameter("ano", "%"+ano+"%");
 		}
 
 		return q.getResultList();
